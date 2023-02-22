@@ -21,7 +21,6 @@ public class Mascota {
 	}
 
 	public Mascota() {
-		super();
 	}
 
 	public String getNombre() {

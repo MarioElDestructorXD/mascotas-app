@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Home</title>
+	</head>
+	<body>
+	
+	<table style="border: 1px solid black;">
+		<thead>
+			<tr>
+				<th>Imagen</th>
+				<th>Nombre</th>
+				<th>Edad</th>
+				<th>Descripcion</th>
+				<th>Tipo de Mascota</th>
+				<th>Disponible</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="mascotas : ${listaMascotas}">
+				<td><img th:src="@{/images/{i} (i = ${mascotas.imagen})}" width="100" height="100"></td>
+				<td>[[${mascotas.nombre}]]</td>
+				<td>[[${mascotas.edad}]]</td>
+				<td>[[${mascotas.descripcion}]]</td>
+				<td>[[${mascotas.tipoMascota}]]</td>
+				<td th:text="${mascotas.diponibleAdopcion == true } ? 'Disponible' : 'No Disponible'" />
+			</tr>
+		</tbody>
+	</table>
+	
+	</body>
+	
+</html>
