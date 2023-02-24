@@ -1,73 +1,73 @@
 package mx.edu.utez.mascotasapp.model;
 
 public class Mascota {
-	
-	String nombre;
-	Integer edad;
-	String descripcion;
-	String tipoMascota;
-	String imagen;
-	Boolean diponibleAdopcion;
-	
-	public Mascota(String nombre, Integer edad, String descripcion, String tipoMascota, String imagen,
-			Boolean diponibleAdopcion) {
-		super();
-		this.nombre = nombre;
-		this.edad = edad;
-		this.descripcion = descripcion;
-		this.tipoMascota = tipoMascota;
-		this.imagen = imagen;
-		this.diponibleAdopcion = diponibleAdopcion;
-	}
 
-	public Mascota() {
-	}
+    String nombre;
+    Integer edad;
+    String descripcion;
+    String tipoMascota;
+    String imagen;
+    Boolean diponibleAdopcion;
 
-	public String getNombre() {
-		return nombre;
-	}
+    public Mascota(String nombre, Integer edad, String descripcion, String tipoMascota, String imagen,
+                   Boolean diponibleAdopcion) {
+        super();
+        this.nombre = nombre;
+        this.edad = edad;
+        this.descripcion = descripcion;
+        this.tipoMascota = tipoMascota;
+        this.imagen = imagen;
+        this.diponibleAdopcion = diponibleAdopcion;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public Mascota() {
+    }
 
-	public Integer getEdad() {
-		return edad;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setEdad(Integer edad) {
-		this.edad = edad;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public Integer getEdad() {
+        return edad;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
 
-	public String getTipoMascota() {
-		return tipoMascota;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setTipoMascota(String tipoMascota) {
-		this.tipoMascota = tipoMascota;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public String getImagen() {
-		return imagen;
-	}
+    public String getTipoMascota() {
+        return tipoMascota;
+    }
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
+    public void setTipoMascota(String tipoMascota) {
+        this.tipoMascota = tipoMascota;
+    }
 
-	public Boolean getDiponibleAdopcion() {
-		return diponibleAdopcion;
-	}
+    public String getImagen() {
+        return imagen;
+    }
 
-	public void setDiponibleAdopcion(Boolean diponibleAdopcion) {
-		this.diponibleAdopcion = diponibleAdopcion;
-	}
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public Boolean getDiponibleAdopcion() {
+        return diponibleAdopcion;
+    }
+
+    public void setDiponibleAdopcion(Boolean diponibleAdopcion) {
+        this.diponibleAdopcion = diponibleAdopcion;
+    }
 }

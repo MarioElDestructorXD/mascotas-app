@@ -16,18 +16,18 @@ import mx.edu.utez.mascotasapp.model.Mascota;
 @RequestMapping(value = "/mascotas")
 public class MascotaController {
 
-@GetMapping("/listar")
-public String listar(Model modelo) {
-List<Mascota> lista = new LinkedList<>();
-Mascota mascota1 = new Mascota("Bombón", 1, "Es un buen gatito", "Gato", "gato1.jpg", true);
-lista.add(mascota1);
-Mascota mascota2 = new Mascota("Botas", 1, "Es muy juguetona", "Perro", "gato2.png", false);
-lista.add(mascota2);
-Mascota mascota3 = new Mascota("Zimba", 1, "Es un buen gatito", "Gato", "gato3.png", false);
-lista.add(mascota3);
-modelo.addAttribute("listaMascotas", lista);
-return "index";
-}
+    @GetMapping("/listar")
+    public String listar(Model modelo) {
+        List<Mascota> lista = new LinkedList<>();
+        Mascota mascota1 = new Mascota("Bombón", 1, "Es un buen gatito", "Gato", "gato1.jpg", true);
+        lista.add(mascota1);
+        Mascota mascota2 = new Mascota("Botas", 1, "Es muy juguetona", "Perro", "gato2.png", false);
+        lista.add(mascota2);
+        Mascota mascota3 = new Mascota("Zimba", 1, "Es un buen gatito", "Gato", "gato3.png", false);
+        lista.add(mascota3);
+        modelo.addAttribute("listaMascotas", lista);
+        return "index";
+    }
 
 
 }
