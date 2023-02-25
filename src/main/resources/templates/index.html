@@ -11,7 +11,7 @@
 
 <nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">MisMascotas.com</a>
+        <a class="navbar-brand" href="/mascotas/listar">MisMascotas.com</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="/mascotas/listar">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Perros</a>
+                    <a class="nav-link" href="/mascotas/listar/1">Perros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gatos</a>
+                    <a class="nav-link" href="/mascotas/listar/2">Gatos</a>
                 </li>
             </ul>
         </div>
@@ -43,9 +43,9 @@
         <div class="card-body">
             <h5 class="card-title">[[${mascotas.nombre}]]</h5>
             <p class="card-text">[[${mascotas.descripcion}]]</p>
+            <p class="card-text">[[${mascotas.tipoMascota}]]</p>
             <p class="card-text">Adopción: [[${mascotas.diponibleAdopcion == true } ? 'Disponible' : 'No
                 Disponible']]</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
 </div>

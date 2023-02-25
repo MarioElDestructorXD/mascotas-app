@@ -1,0 +1,19 @@
+<form th:action="@{/publicacion/guardar}" method="POST">
+
+	<input type="text" name="titulo" placeholder="Nombre"/>
+	<input type="text" name="contenido" placeholder="Contenido"/>
+	<input type="hidden" name="estatus" value="true"/>
+	
+	<input type="submit" value="Guardar"/>
+</form>
+
+<table>
+	<tr>
+		<td>Titulo</td>
+		<td>Contenido</td>
+	</tr>
+	<tr th:each = "publicacion:${listPublicaciones}">
+		<td>[[${publicacion.titulo}]]</td>
+		<td>[[${publicacion.conten}]]</td>
+	</tr>
+</table>
