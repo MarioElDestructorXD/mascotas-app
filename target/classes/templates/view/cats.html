@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link th:replace="fragments/bootstrap :: link">
+	<title>Gatos</title>
+</head>
+
+<body>
+
+	<span th:insert="fragments/header :: header"></span>
+
+	<div class="mt-4 mx-5">
+		<div class="d-flex flex-row align-items-center">
+			<h1>Gatos</h1>
+			<div class="form-check form-switch ms-auto">
+				<input class="form-check-input" type="checkbox" value="" id="cbc" onclick="changeList()">
+				<label class="form-check-label" for="flexCheckIndeterminate">
+					En adopción
+				</label>
+				<button class="ms-3 btn btn-success"
+					style="position: absolute; top: 91%; left: 93%; border-radius: 50%;" data-bs-target="#addCatModal"
+					data-bs-toggle="modal">+</button>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-3" th:each="tmp: ${petList}">
+				<div class="card mb-3">
+					<img th:src="@{/img/{img} (img = ${tmp.imagen}) }" class="card-img-top">
+					<div class="card-body">
+						<div class="d-flex flex-row align-items-center">
+							<h4 class="card-title">[[${tmp.nombre}]]</h4>
+							<span class="ms-auto badge bg-primary">[[${tmp.edad}]] año(s)</span>
+						</div>
+						<hr>
+						<p class="card-text mb-0"><b>Tipo: </b>[[${tmp.tipoMascota}]]</p>
+						<p class="card-text mb-0"><b>Descripcion: </b>[[${tmp.descripcion}]]</p>
+						<p class="card-text mb-0"><b>Registro: </b>[[${tmp.fechaRescate}]]</p>
+						<hr>
+						<div class="col-12" th:with="flag = ${tmp.disponibleAdopcion}">
+							<span th:if="${flag}" class="badge bg-success">En adopción</span>
+							<span th:unless="${flag}" class="badge bg-danger">Adoptado</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="addCatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content border-0">
+				<div class="card border-0">
+					<div class="card-header bg-dark text-white">
+						<h4>Agregar</h4>
+					</div>
+					<div class="card-body">
+						<form name="dogForm" th:action="@{/mascota/gato/save}" method="post">
+							<div class="row g-3">
+								<div class="col-12">
+									<label>Nombre:</label>
+									<input type="text" name="nombre" class="form-control"
+										pattern="^[^\s][a-zA-ZÁÉÍÓÚáéíóú\-\s]{0,25}$" required>
+								</div>
+								<div class="col-12">
+									<label>Descripción:</label>
+									<input type="text" name="descripcion" class="form-control"
+										pattern="^[^\s][a-zA-ZÁÉÍÓÚáéíóú\-\s]{0,25}$" required>
+								</div>
+								<div class="col-12">
+									<label>Edad:</label>
+									<input type="number" min="1" max="15" name="edad" class="form-control" required>
+								</div>
+								<div class="col-12">
+									<label>Fecha de rescate:</label>
+									<input type="date" name="fechaRescate" class="form-control" required>
+								</div>
+								<div class="col-12">
+									<hr class="my-0">
+								</div>
+								<div class="col-12 text-end">
+									<button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+									<button class="btn btn-primary" type="submit">Registrar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:replace="fragments/bootstrap :: script"></script>
+	<script>
+		let url = window.location;
+
+		if (url.toString().split('/')[url.toString().split('/').length - 1] === 'enadopcion') {
+			document.getElementById('cbc').checked = true;
+		}
+
+		let changeList = () => {
+			if (url.toString().split('/')[url.toString().split('/').length - 1] !== 'enadopcion') {
+				window.location.replace('http://localhost:8080/mascota/gato/enadopcion');
+			} else {
+				window.location.replace('http://localhost:8080/mascota/gato');
+			}
+		}
+	</script>
+
+</body>
+
+</html>
