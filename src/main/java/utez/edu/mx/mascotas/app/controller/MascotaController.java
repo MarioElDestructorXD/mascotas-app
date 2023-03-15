@@ -3,6 +3,7 @@ package utez.edu.mx.mascotas.app.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import utez.edu.mx.mascotas.app.model.Caracter;
 import utez.edu.mx.mascotas.app.model.Mascota;
+import utez.edu.mx.mascotas.app.service.CaracterServiceImpl;
 import utez.edu.mx.mascotas.app.service.MascotaServiceImpl;
 
 @Controller
 public class MascotaController {
 	
 	private ArrayList<Mascota> petList;
+	@Autowired
+	private CaracterServiceImpl serviceCaracter;
 	
 	@Autowired
 	private MascotaServiceImpl ms;
@@ -71,36 +77,39 @@ public class MascotaController {
 	}
 	
 	@PostMapping(value = "/mascota/{tipo}/save")
-	public String savePet(Model model, @PathVariable Map<String, String> pathVariables, Mascota mascota) {
+	public String savePet(Model model, @PathVariable Map<String, String> pathVariables, Mascota mascota, RedirectAttributes redirectAttributes) {
 		
+		List<Caracter> lista = serviceCaracter.listarTodo();		
 		String tipo = pathVariables.get("tipo") != null ? pathVariables.get("tipo") : null;
 		String view = "";
 		
 		if(tipo != null && tipo.equals("perro")) {
 			mascota.setId(petList.size()+1);
 			mascota.setTipoMascota("Perro");
-			mascota.setImagen("chihuahua.jpg");
+			mascota.setImagen("perro4.jpg");
 			mascota.setDisponibleAdopcion(true);
 			
 			ms.guardar(mascota);
 			petList = listFilter(1, ms.listar());
 			
-			view = "view/dogs";
+			view = "redirect:/mascota/perro";
 			
 		}else if(tipo != null && tipo.equals("gato")) {
 			mascota.setId(petList.size()+1);
 			mascota.setTipoMascota("Gato");
-			mascota.setImagen("egipcio.jpg");
+			mascota.setImagen("gato4.jpg");
 			mascota.setDisponibleAdopcion(true);
 			
 			ms.guardar(mascota);
 			petList = listFilter(3, ms.listar());
 			
-			view = "view/cats";
+			view = "redirect:/mascota/gato";
 		}
 		
+		model.addAttribute("listaCaracteres",lista);
 		model.addAttribute("tipo", tipo);
 		model.addAttribute("petList", petList);
+		redirectAttributes.addFlashAttribute("msg_success","Registro Existoso");
 		return view;
 	}
 	

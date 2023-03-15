@@ -34,13 +34,14 @@ public class MascotaServiceImpl implements IMascotasService {
 		Date fecha5 = new Date(2019,03,29,12,0,0);
 		Date fecha6 = new Date(2018,02,04,12,0,0);
 		
-		petList.add(new Mascota(1, "Tobby", 1, "Es un perro", "Perro", "chihuahua.jpg", true, fecha1));
-		petList.add(new Mascota(2, "Hercules", 3, "Es un perro", "Perro", "husky.jpeg", false, fecha2));
-		petList.add(new Mascota(3, "Poncho", 2, "Es un perro", "Perro", "shiba-inu.jpg", true, fecha3));
 		
-		petList.add(new Mascota(4, "Willy", 2, "Es un gato", "Gato", "egipcio.jpg", false, fecha4));
-		petList.add(new Mascota(5, "Sr Bigotes", 2, "Es un gato", "Gato", "heterocromia.jpg", true, fecha5));
-		petList.add(new Mascota(6, "Manchas", 3, "Es un gato", "Gato", "siames.jpg", false, fecha6));
+		petList.add(new Mascota(1, "Tobby", 1, "Es un perro", "Perro", "perro1.jpg", true, fecha1));
+		petList.add(new Mascota(2, "Hercules", 3, "Es un perro", "Perro", "perro2.jpg", false, fecha2));
+		petList.add(new Mascota(3, "Poncho", 2, "Es un perro", "Perro", "perro3.jpg", true, fecha3));
+		
+		petList.add(new Mascota(4, "Willy", 2, "Es un gato", "Gato", "gato1.jpg", false, fecha4));
+		petList.add(new Mascota(5, "Sr Bigotes", 2, "Es un gato", "Gato", "gato2.jpg", true, fecha5));
+		petList.add(new Mascota(6, "Manchas", 3, "Es un gato", "Gato", "gato3.jpg", false, fecha6));
 	}
 
 }

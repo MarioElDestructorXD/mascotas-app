@@ -10,6 +10,8 @@ public class Mascota {
 	private String descripcion, tipoMascota, imagen;
 	private boolean disponibleAdopcion;
 	private Date fechaRescate;
+	private Caracter caracter;
+	
 	
 	public Mascota() {}
 
@@ -110,5 +112,13 @@ public class Mascota {
 
 	public void setFechaRescate(Date fechaRescate) {
 		this.fechaRescate = fechaRescate;
+	}
+	
+	public Caracter getCaracter() {
+		return caracter;
+	}
+
+	public void setCaracter(Caracter caracter) {
+		this.caracter = caracter;
 	}
 }

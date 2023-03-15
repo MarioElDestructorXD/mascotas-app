@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link th:replace="fragments/bootstrap :: link">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 	<title>Perros</title>
 </head>
 
@@ -22,7 +24,7 @@
 					En adopción
 				</label>
 			</div>
-			<button class="ms-3 btn btn-success" style="position: absolute; top: 91%; left: 93%; border-radius: 50%;"
+			<button class="ms-3 btn btn-success" style="position: fixed; top: 91%; left: 93%; border-radius: 50%;"
 				data-bs-target="#addDogModal" data-bs-toggle="modal">+</button>
 		</div>
 		<br>
@@ -55,7 +57,7 @@
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content border-0">
 				<div class="card border-0">
-					<div class="card-header bg-dark text-white">
+					<div class="card-header bg-primary text-white">
 						<h4>Agregar nuevo perrito</h4>
 					</div>
 					<div class="card-body">
@@ -66,18 +68,25 @@
 									<input type="text" name="nombre" class="form-control"
 										pattern="^[^\s][a-zA-ZÁÉÍÓÚáéíóú\-\s]{0,25}$" required>
 								</div>
-								<div class="col-4">
+								<div class="col-12">
 									<label>Descripción:</label>
 									<input type="text" name="descripcion" class="form-control"
 										pattern="^[^\s][a-zA-ZÁÉÍÓÚáéíóú\-\s]{0,25}$" required>
 								</div>
-								<div class="col-4">
+								<div class="col-12">
 									<label>Edad:</label>
 									<input type="number" min="1" max="15" name="edad" class="form-control" required>
 								</div>
-								<div class="col-4">
+								<div class="col-12">
 									<label>Fecha de rescate:</label>
 									<input type="date" name="fechaRescate" class="form-control" required>
+								</div>
+								<div class="col-12">
+									<label>Caracter</label>
+									<select class="form-control" th:field="*{caracter.id}">
+										<option th:each="tmpCaracter: ${listaCaracteres}" th:value="${tmpCaracter.id}"
+											th:text="${tmpCaracter.nombre}" />
+									</select>
 								</div>
 								<div class="col-12">
 									<hr class="my-0">
@@ -109,6 +118,18 @@
 				window.location.replace('http://localhost:8080/mascota/perro');
 			}
 		}
+	</script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<script th:if="${msg_success != null}">
+		Toastify({
+			text: "[[${msg_success}]]",
+			duration: 5000,
+			gravity: "bottom", // `top` or `bottom`
+			position: "left", // `left`, `center` or `right`
+			style: {
+				background: "linear-gradient(to right, #00b09b, #96c93d)",
+			}
+		}).showToast();
 	</script>
 </body>
 
